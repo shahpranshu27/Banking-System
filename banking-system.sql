@@ -16,3 +16,8 @@ email varchar(255) primary key not null,
 password varchar(255) not null
 );
 
+select * from user;
+
+select * from accounts;
+
+delete from user;
