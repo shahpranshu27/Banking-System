@@ -20,14 +20,14 @@ public class Accounts {
 	public long open_account(String email) {
 		
 		if(!account_exist(email)) {
-			String query = "insert into accounts(account_number, full_name, email, balance, securit_pin) values(?,?,?,?,?)";
+			String query = "insert into accounts(account_number, full_name, email, balance, security_pin) values(?,?,?,?,?)";
 			scanner.nextLine();
 			System.out.println("Enter full name : ");
 			String full_name = scanner.nextLine();
 			System.out.println("Enter initial amount : ");
 			double balance = scanner.nextDouble();
 			System.out.println("Enter security pin : ");
-			String security_pin = scanner.nextLine();
+			String security_pin = scanner.next();
 			
 			try {
 				long account_number =generateAccountNumber();
@@ -86,7 +86,7 @@ public class Accounts {
 		return 1000100;
 	}
 
-	private boolean account_exist(String email) {
+	public boolean account_exist(String email) {
 		String query = "select account_number from accounts where email=?";
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(query);

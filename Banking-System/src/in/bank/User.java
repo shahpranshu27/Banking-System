@@ -18,15 +18,18 @@ public class User {
 
 	public void register() {
 		System.out.println();
-		System.out.println("Enter full name : ");
-		String full_name = scanner.nextLine();
-		System.out.println("Enter email : ");
-		String email = scanner.nextLine();
-		System.out.println("Enter password : ");
-		String password = scanner.nextLine();
+		System.out.print("Enter full name : ");
+		String full_name = scanner.next();
+		System.out.println();
+		System.out.print("Enter email : ");
+		String email = scanner.next();
+		System.out.println();
+		System.out.print("Enter password : ");
+		String password = scanner.next();
 		
 		if(user_exist(email)) {
 			System.out.println("User already exists!! Please login!");
+			System.out.println();
 			return;
 		}
 		String register_query = "insert into user(full_name, email, password) values(?,?,?)";
@@ -38,9 +41,11 @@ public class User {
 			int affected_rows = preparedStatement.executeUpdate();
 			if(affected_rows>0) {
 				System.out.println("Registration successfull!");
+				System.out.println();
 			}
 			else {
 				System.out.println("Registration failed!");
+				System.out.println();
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -49,10 +54,11 @@ public class User {
 	
 	public String login() {
 		
-		System.out.println("Enter email :");
-		String email = scanner.nextLine();
-		System.out.println("Enter password : ");
-		String password = scanner.nextLine();
+		System.out.print("Enter email :");
+		String email = scanner.next();
+		System.out.println();
+		System.out.print("Enter password : ");
+		String password = scanner.next();
 		
 		String login_query = "select * from user where email=? and password=?";
 		try {
